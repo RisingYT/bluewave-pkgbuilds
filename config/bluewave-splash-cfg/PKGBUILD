@@ -1,0 +1,23 @@
+# Maintainer: TrueRed
+pkgname=bluewave-splash-cfg
+destname="/etc"
+pkgver=2022.07b
+pkgrel=1
+pkgdesc="Configuration files for the Splash version of Blue Wave."
+arch=('any')
+url="https://github.com/RisingYT"
+license=('GPL3')
+makedepends=('git')
+
+depends=(alacritty kvantum openbox)
+
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+${url}/${pkgname}")
+sha256sums=('SKIP')
+
+package() {
+	install -dm755 ${pkgdir}${destname}
+	cp -r ${srcdir}/${pkgname}${destname}/* ${pkgdir}${destname}
+}

@@ -1,0 +1,23 @@
+# Maintainer: TrueRed
+pkgname=bluewave-tsunami-cfg
+destname="/etc"
+pkgver=2022.07b
+pkgrel=1
+pkgdesc="Configuration files for the Tsunami version of Blue Wave."
+arch=('any')
+url="https://github.com/RisingYT"
+license=('GPL3')
+makedepends=('git')
+
+depends=(plank alacritty xfce4-panel neofetch ulauncher)
+
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+${url}/${pkgname}")
+sha256sums=('SKIP')
+
+package() {
+	install -dm755 ${pkgdir}${destname}
+	cp -r ${srcdir}/${pkgname}${destname}/* ${pkgdir}${destname}
+}
